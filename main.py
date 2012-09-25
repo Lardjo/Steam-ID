@@ -37,7 +37,7 @@ if fsize < 10000:
 
 else:
 
-	print ("Downloading system information. File Size: %s Bytes" % (fsize))
+	print ("\nDownloading system information. File Size: %s Bytes" % (fsize))
 
 	fsize_dl = 0
 	block_sz = 8192
@@ -70,7 +70,7 @@ try:
 	for node in getid:
 
 		SteamID64 = node.childNodes[0].nodeValue
-		print ("SteamID64: ", SteamID64)
+		print ("\nSteamID64: ", SteamID64)
 
 except xml.parsers.expat.ExpatError:
 
@@ -91,6 +91,39 @@ else:
 	print ("APIKEY: Parsing failed. First you need to get all settings!.. Try again")
 
 # END Ger Api Key
+
+# JSON Parse
+
+steamjson = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + apikey +"&steamids=" + SteamID64
+
+file_name = (name + ".json")
+u = urllib.request.urlopen(steamjson)
+f = open(file_name, "wb")
+meta = u.info()
+fsize = int(meta.get("Content-Length"))
+
+print ("\nDownloading JSON file. Size: %s Bytes" % (fsize))
+
+fsize_dl = 0
+block_sz = 8192
+
+while True:
+
+	buffer = u.read(block_sz)
+	
+	if not buffer:
+		
+		break
+
+	fsize_dl += len(buffer)
+	f.write(buffer)
+	status = r"%10d [%3.2f%%]" % (fsize_dl, fsize_dl * 100. / fsize)
+	status = status + chr(8)*(len(status)+1)
+	print (status)
+
+f.close()
+
+# END JSON Parse
 
 # Exit
 
