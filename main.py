@@ -11,6 +11,7 @@ from xml.dom.minidom import *
 name = ""
 steamxml = ""
 steamjson = ""
+off = 0
 
 # Input Steam username and write full path to XML file
 
@@ -28,26 +29,34 @@ u = urllib.request.urlopen(steamxml)
 f = open(file_name, "wb")
 meta = u.info()
 fsize = int(meta.get("Content-Length"))
-print ("Downloading system information. File Size: %s Bytes" % (fsize))
 
-fsize_dl = 0
-block_sz = 8192
+if fsize < 10000:
 
-while True:
+	off = 1
+	print ("Check Steam server availability!")
 
-	buffer = u.read(block_sz)
+else:
+
+	print ("Downloading system information. File Size: %s Bytes" % (fsize))
+
+	fsize_dl = 0
+	block_sz = 8192
+
+	while True:
+
+		buffer = u.read(block_sz)
 	
-	if not buffer:
+		if not buffer:
 		
-		break
+			break
 
-	fsize_dl += len(buffer)
-	f.write(buffer)
-	status = r"%10d [%3.2f%%]" % (fsize_dl, fsize_dl * 100. / fsize)
-	status = status + chr(8)*(len(status)+1)
-	print (status)
+		fsize_dl += len(buffer)
+		f.write(buffer)
+		status = r"%10d [%3.2f%%]" % (fsize_dl, fsize_dl * 100. / fsize)
+		status = status + chr(8)*(len(status)+1)
+		print (status)
 
-f.close()
+	f.close()
 
 # END Download XML User File
 
