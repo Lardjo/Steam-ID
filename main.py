@@ -5,7 +5,6 @@
 import os
 import sys
 import urllib.request
-import pymongo
 
 from xml.dom.minidom import *
 
