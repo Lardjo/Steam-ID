@@ -84,7 +84,8 @@ if off == 0:
 
 	f = open("api_key.txt","r")
 	apikey = f.readline()
-	print ("APIKEY: ", apikey)
+	secretapi = apikey [:5] + "**************"
+	print ("APIKEY: ", secretapi)
 
 else:
 
