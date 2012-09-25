@@ -77,3 +77,17 @@ except xml.parsers.expat.ExpatError:
 	print ("Error parse!")
 
 # END XML Parser
+
+# Get Api Key
+
+if off == 0:
+
+	f = open("api_key.txt","r")
+	apikey = f.readline()
+	print ("APIKEY: ", apikey)
+
+else:
+
+	print ("APIKEY: Parsing failed. First you need to get all settings!.. Try again")
+
+# END Ger Api Key
