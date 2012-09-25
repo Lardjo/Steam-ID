@@ -33,7 +33,7 @@ fsize = int(meta.get("Content-Length"))
 if fsize < 10000:
 
 	off = 1
-	print ("Check Steam server availability!")
+	print ("\nCheck Steam server availability!")
 
 else:
 
@@ -91,3 +91,10 @@ else:
 	print ("APIKEY: Parsing failed. First you need to get all settings!.. Try again")
 
 # END Ger Api Key
+
+# Exit
+
+print ("\nPress key for exit...")
+input()
+
+# END Exit
