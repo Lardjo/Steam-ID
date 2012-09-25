@@ -53,11 +53,18 @@ f.close()
 
 # XML Parser
 
-xml = parse(file_name)
-getid = xml.getElementsByTagName("steamID64")
+try:
 
-for node in getid:
+	xml = parse(file_name)
+	getid = xml.getElementsByTagName("steamID64")
 
-	SteamID64 = node.childNodes[0].nodeValue
+	for node in getid:
+
+		SteamID64 = node.childNodes[0].nodeValue
+		print ("SteamID64: ", SteamID64)
+
+except xml.parsers.expat.ExpatError:
+
+	print ("Error parse!")
 
 # END XML Parser
