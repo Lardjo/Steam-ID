@@ -55,10 +55,10 @@ f.close()
 # XML Parser
 
 xml = parse(file_name)
-steamID64 = xml.getElementsByTagName("steamID64")
+getid = xml.getElementsByTagName("steamID64")
 
-for node in steamID64:
+for node in getid:
 
-	print (node.childNodes[0].nodeValue)
+	SteamID64 = node.childNodes[0].nodeValue
 
 # END XML Parser
