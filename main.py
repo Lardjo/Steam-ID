@@ -51,3 +51,14 @@ while True:
 f.close()
 
 # END Download XML User File
+
+# XML Parser
+
+xml = parse(file_name)
+steamID64 = xml.getElementsByTagName("steamID64")
+
+for node in steamID64:
+
+	print (node.childNodes[0].nodeValue)
+
+# END XML Parser
