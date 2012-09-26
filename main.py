@@ -15,10 +15,12 @@ off = 0
 
 # Input Steam username and write full path to XML file
 
-print ("\n...SteamID...")
-print ("\nEnter your game login on Steam: ")
+print ("""SteamID... 
+Enter your game login on Steam:""")
+
 name = input()
-steamxml = "http://steamcommunity.com/id/" + name +"?xml=1"
+
+steamxml = "http://steamcommunity.com/id/{0}?xml=1".format(name)
 
 # END Input Steam username and write full path to XML file
 
