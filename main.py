@@ -62,7 +62,6 @@ try:
 	for node in getid:
 
 		SteamID64 = node.childNodes[0].nodeValue
-		print ("\nSteamID64: ", SteamID64)
 		os.remove(file_name)
 
 except xml.parsers.expat.ExpatError:
@@ -77,8 +76,6 @@ if len(SteamID64) > 1:
 
 	f = open("api_key.txt","r")
 	apikey = f.readline()
-	secretapi = apikey [:4] + "*" * 28
-	print ("APIKEY: ", secretapi)
 
 else:
 
