@@ -6,6 +6,7 @@ import os
 import sys
 import urllib.request
 import json
+import datetime
 
 from xml.dom.minidom import *
 
@@ -33,10 +34,11 @@ f = open(file_name, "wb")
 meta = u.info()
 fsize = int(meta.get("Content-Length"))
 
-if fsize < 10000:
+if fsize < 5000:
 
 	off = 1
 	print ("\nCheck Steam server availability!")
+	
 
 else:
 
@@ -144,6 +146,13 @@ location = data["response"]["players"][0]["loccountrycode"]
 personaname = data["response"]["players"][0]["personaname"]
 
 # END JSON Parse
+
+# Information
+
+print ("\nHi, {0} ({1})!".format(realname, personaname))
+print ("Your country: {0}".format(location))
+print ("You created profile: {0}".format(datetime.datetime.fromtimestamp(int(timecreated)).strftime("%d %B %Y")))
+print ("Last logged: {0}".format(datetime.datetime.fromtimestamp(int(lastlogoff)).strftime("%H hour ago")))
 
 # Exit
 
