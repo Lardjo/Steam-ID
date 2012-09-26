@@ -2,17 +2,13 @@
 # File: main.py
 # Main File
 
+import datetime
+import json
 import os
 import sys
 import urllib.request
-import json
-import datetime
 
 from xml.dom.minidom import *
-
-name = ""
-steamxml = ""
-steamjson = ""
 
 # Input Steam username and write full path to XML file
 
