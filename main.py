@@ -74,6 +74,7 @@ try:
 
 		SteamID64 = node.childNodes[0].nodeValue
 		print ("\nSteamID64: ", SteamID64)
+		os.remove(file_name)
 
 except xml.parsers.expat.ExpatError:
 
@@ -134,6 +135,7 @@ f.close()
 djson = open(file_name)
 data = json.load(djson)
 djson.close()
+os.remove(file_name)
 
 timecreated = data["response"]["players"][0]["timecreated"]
 lastlogoff = data["response"]["players"][0]["lastlogoff"]
