@@ -1,5 +1,6 @@
 #!usr/bin/env python3
 # File: main.py
+# Version: 0.1
 # Main File
 
 import datetime
