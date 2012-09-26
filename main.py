@@ -95,7 +95,7 @@ else:
 
 # END Ger Api Key
 
-# JSON Parse
+# Download JSON File
 
 steamjson = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={0}&steamids={1}".format(apikey, SteamID64)
 
@@ -126,7 +126,7 @@ while True:
 
 f.close()
 
-# END JSON Parse
+# END Download JSON File
 
 # Exit
 
