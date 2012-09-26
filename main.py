@@ -1,18 +1,15 @@
 #!usr/bin/env python3
 # File: main.py
+# Version: 0.1
 # Main File
 
+import datetime
+import json
 import os
 import sys
 import urllib.request
-import json
-import datetime
 
 from xml.dom.minidom import *
-
-name = ""
-steamxml = ""
-steamjson = ""
 
 # Input Steam username and write full path to XML file
 
@@ -66,7 +63,6 @@ try:
 	for node in getid:
 
 		SteamID64 = node.childNodes[0].nodeValue
-		print ("\nSteamID64: ", SteamID64)
 		os.remove(file_name)
 
 except xml.parsers.expat.ExpatError:
@@ -81,8 +77,6 @@ if len(SteamID64) > 1:
 
 	f = open("api_key.txt","r")
 	apikey = f.readline()
-	secretapi = apikey [:4] + "*" * 28
-	print ("APIKEY: ", secretapi)
 
 else:
 
