@@ -13,7 +13,6 @@ from xml.dom.minidom import *
 name = ""
 steamxml = ""
 steamjson = ""
-off = 0
 
 # Input Steam username and write full path to XML file
 
@@ -34,34 +33,26 @@ f = open(file_name, "wb")
 meta = u.info()
 fsize = int(meta.get("Content-Length"))
 
-if fsize < 5000:
+print ("\nDownloading system information. File Size: {0} Bytes".format(fsize))
 
-	off = 1
-	print ("\nCheck Steam server availability!")
+fsize_dl = 0
+block_sz = 8192
+
+while True:
+
+	buffer = u.read(block_sz)
 	
-
-else:
-
-	print ("\nDownloading system information. File Size: {0} Bytes".format(fsize))
-
-	fsize_dl = 0
-	block_sz = 8192
-
-	while True:
-
-		buffer = u.read(block_sz)
-	
-		if not buffer:
+	if not buffer:
 		
-			break
+		break
 
-		fsize_dl += len(buffer)
-		f.write(buffer)
-		status = r"%10d [%3.2f%%]" % (fsize_dl, fsize_dl * 100. / fsize)
-		status = status + chr(8)*(len(status)+1)
-		print (status)
+	fsize_dl += len(buffer)
+	f.write(buffer)
+	status = r"%10d [%3.2f%%]" % (fsize_dl, fsize_dl * 100. / fsize)
+	status = status + chr(8)*(len(status)+1)
+	print (status)
 
-	f.close()
+f.close()
 
 # END Download XML User File
 
@@ -86,7 +77,7 @@ except xml.parsers.expat.ExpatError:
 
 # Get Api Key
 
-if off == 0:
+if len(SteamID64) > 1:
 
 	f = open("api_key.txt","r")
 	apikey = f.readline()
