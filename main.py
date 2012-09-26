@@ -39,7 +39,7 @@ if fsize < 10000:
 
 else:
 
-	print ("\nDownloading system information. File Size: %s Bytes" % (fsize))
+	print ("\nDownloading system information. File Size: {0} Bytes".format(fsize))
 
 	fsize_dl = 0
 	block_sz = 8192
@@ -97,7 +97,7 @@ else:
 
 # JSON Parse
 
-steamjson = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + apikey +"&steamids=" + SteamID64
+steamjson = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={0}&steamids={1}".format(apikey, SteamID64)
 
 file_name = (name + ".json")
 u = urllib.request.urlopen(steamjson)
@@ -105,7 +105,7 @@ f = open(file_name, "wb")
 meta = u.info()
 fsize = int(meta.get("Content-Length"))
 
-print ("\nDownloading JSON file. Size: %s Bytes" % (fsize))
+print ("\nDownloading JSON file. Size: {0} Bytes".format(fsize))
 
 fsize_dl = 0
 block_sz = 8192
