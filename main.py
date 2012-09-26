@@ -5,6 +5,7 @@
 import os
 import sys
 import urllib.request
+import json
 
 from xml.dom.minidom import *
 
@@ -127,6 +128,20 @@ while True:
 f.close()
 
 # END Download JSON File
+
+# JSON Parse
+
+djson = open(file_name)
+data = json.load(djson)
+djson.close()
+
+timecreated = data["response"]["players"][0]["timecreated"]
+lastlogoff = data["response"]["players"][0]["lastlogoff"]
+realname = data["response"]["players"][0]["realname"]
+location = data["response"]["players"][0]["loccountrycode"]
+personaname = data["response"]["players"][0]["personaname"]
+
+# END JSON Parse
 
 # Exit
 
